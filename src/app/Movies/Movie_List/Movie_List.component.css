@@ -11,7 +11,7 @@ body {
     margin: 10px; 
     position: absolute;
 
-    width: 100%;  
+    width: 70%; 
     grid-gap: 50px;
     height: 100%; 
 }
@@ -61,3 +61,24 @@ h1 {
     text-align: center;
     font-style: italic;
 } 
+
+
+.aside_contain {
+    border: 2px solid black ;
+    width: auto; 
+    height:50dvh;   
+    position: absolute;
+    top: 50px; 
+    right: 0; 
+    display: flex;
+    flex-direction: column;
+    padding: 30px; 
+    justify-content: space-around;
+   background-color: #e6e6e6; 
+}
+
+
+.aside_contain h3 {
+    border-bottom: 2px solid rgba(100, 100, 100, 1);
+} 
+

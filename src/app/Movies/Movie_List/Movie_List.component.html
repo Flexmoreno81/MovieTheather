@@ -10,3 +10,33 @@
   
  
 </div>
+
+<div class = 'aside_contain'>
+  <h3>Narrow down your chocie</h3>
+
+  <label>Genre</label>
+  <select>
+    <option>Any Genre</option>
+    @for (item of genreList; track $index) {
+      <option>{{item}}</option>
+    }
+  </select>
+
+  <label>Ratings</label>
+  <select>
+    <option>Any Rating</option>
+    @for (item of RatingList; track $index) {
+      <option>{{item}}</option>
+    }
+  </select>
+
+  <label>Realse Year</label>
+  <select>
+    <option>Any Year</option>
+    @for (item of RealseYear; track $index) {
+      <option>{{item}}</option>
+    }
+  </select>
+
+
+</div>

@@ -16,5 +16,17 @@ constructor(private xhttp: HttpClient) { }
 
   public getMovies(): Observable<Movies []> {
     return (this.xhttp.get<Movies []>(MOVIES_API_BASE_CALL)) ; 
+  }
+  
+  public getRatingList(): Observable<string []> {
+    return (this.xhttp.get<string[]>(MOVIES_API_BASE_CALL + "/RatingList")) ; 
+  }
+  
+  public getGenreList(): Observable<string[]> {
+    return (this.xhttp.get<string[]>(MOVIES_API_BASE_CALL + "/ListOfGenre")) ; 
+  }
+  
+  public getRealseYear(): Observable<string[]> {
+    return (this.xhttp.get<string[]>(MOVIES_API_BASE_CALL + '/ListOfYears')) ;
   } 
 }

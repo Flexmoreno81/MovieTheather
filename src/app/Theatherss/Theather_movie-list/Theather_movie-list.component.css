@@ -8,7 +8,7 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
-  
+    margin: 15px; 
     position: absolute;
 
     width: 100%;  
@@ -37,7 +37,7 @@ body {
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.1);
     display: block;
-    height: 20% ; 
+    height: 50%; 
     padding: 0; 
     position: relative;
     bottom: 20px; 
@@ -52,4 +52,17 @@ body {
 h1 {
     text-align: center;
     font-style: italic;
+}
+.movie-poster:hover {
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transform: scale(1.2);
+    
+}
+
+.movie-poster:hover {
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transform: scale(1.2);
+    
 } 

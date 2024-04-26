@@ -18,25 +18,27 @@ export class TheaterComponent implements OnInit {
   constructor(private router: Router, private theatherServices: TheatherServicesService) { }
 
 
-  protected searchQuerry: string = ""; 
+  public Theaters: Theater[] = []; 
+  public filter_t: Theater[] =  []; 
+  public searchQuery: string = ''; 
 
 
-
-
-
-  public  Theathers: Theater[] = [] ; 
-
-
- protected updateFilterArray() {
-    this.Theathers = this.Theathers.filter((theater) => {
-      // Implement your filtering logic here (e.g., check if theater.name or theater.city contains searchQuery)
-      return theater.name.toLowerCase().includes(this.searchQuerry.toLowerCase()) ||
-             theater.city.toLowerCase().includes(this.searchQuerry.toLowerCase());
+protected updateFilterArray() {
+  if (this.searchQuery === "") {
+ 
+    this.filter_t = this.Theaters ; 
+  } else {
+  
+    this.filter_t = this.Theaters.filter((theater) => {
+      return theater.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+             theater.city.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
+             theater.zipcode.toLowerCase().includes(this.searchQuery.toLowerCase());
     });
   }
+}
 
   public redirectPage(theather: Theater): void {
-    if (this.Theathers == null) {
+    if (this.Theaters == null) {
       this.router.navigate(["/not-found"]) ; 
     } 
     
@@ -49,7 +51,8 @@ export class TheaterComponent implements OnInit {
 
   ngOnInit(): void {
     this.theatherServices.getTheather().subscribe((data: Theater[]) => {
-      this.Theathers = data;
+      this.Theaters = data;
+      this.filter_t = data; 
       
     });
   }
