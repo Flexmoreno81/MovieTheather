@@ -1,0 +1,16 @@
+
+
+
+<div class="search-container">
+  <input [(ngModel)]="searchQuerry" type="text" placeholder="Type in Theater Name, Zip code, or city..."
+         (keydown.enter)="updateFilterArray()">
+ 
+  
+</div>
+
+<div class="grid_container">
+  <div *ngFor="let theater of Theathers; let i = index" class="items" (click)="redirectPage(theater)">
+    <p class="title">{{ theater.name }}</p>
+    <p>{{ theater.city }}, {{ theater.state }}</p>
+  </div>
+</div>

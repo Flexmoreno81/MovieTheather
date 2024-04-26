@@ -1,0 +1,12 @@
+<h1>Welcome. here's a list of movies in our disposal</h1>
+
+<div class="grid-container">
+  @for (x of Movie_List; track $index) {
+    <div class="movie-poster">
+      <img src="./assets/IMG/comming_soon_now.jpg" alt = "movie Poster">
+      <p>{{x.title}}</p>
+    </div>
+  }
+  
+ 
+</div>

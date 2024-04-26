@@ -1,0 +1,65 @@
+/* Movie Theater Themed 404 Page CSS */
+div { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    h1 { font-size: 5em; }
+    p { font-size: 1.5em; }
+
+
+
+.page-404 {
+      background-image: url('/assets/IMG/curtain_brick.jpg');
+      color: #fff;
+      height: 100vh; /* Full height of the viewport */
+      width: 100vw; /* Full width of the viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden; /* Hide any overflow */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: 0; 
+      left: 0; 
+    }
+    
+  
+  .page-404 h1 {
+    font-size: 10em;
+    margin: 0;
+  }
+  
+  .page-404 p {
+    font-size: 2em;
+  }
+  
+  .page-404 a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 900;
+    font-size: 3em;
+  }
+  
+  /* Curtain styles */
+ 
+  
+  /* Spotlight effect */
+  @keyframes spotlight {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+  }
+  
+  .spotlight {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spotlight 1s ease forwards;
+  }
+  

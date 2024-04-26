@@ -1,0 +1,63 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+  }
+
+  .search-container input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin-right: 10px;
+    flex-grow: 1;
+  }
+
+  .search-icon {
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat center;
+    background-size: contain;
+    pointer-events: all;
+  }
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: hidden ;
+    width: 100%;
+    height:auto;
+    margin-left: 2em;
+   
+}
+
+.items {
+  border: 1px solid black;
+  width: 55%;
+  height: auto;
+  margin: 25px;
+  position: relative;
+  font-weight: 700;
+  font-style: italic;
+  transition: transform 0.5s linear;
+  
+}
+
+.items:hover {
+  box-shadow: 5px 5px 5px rgba(131, 129, 129, 0.5);
+  transform: scale(1.1);
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+.title {
+  text-align: center;
+}
+
+
+

@@ -1,0 +1,29 @@
+
+div {
+    width: 100%; 
+    box-sizing: border-box;
+    display: block;
+    height: 75dvh;
+    z-index: 0;
+    position: relative;
+   
+
+    background-size: 100% 90%;
+    background-repeat: no-repeat;
+    background-position: top 50% left 50%;
+    
+  
+}
+
+
+p {
+    text-align: center;
+    font-family: "Pacifico", cursive;
+    font-weight:800;
+    font-style: normal;
+    position: relative;
+
+    font-size: 1.5em;
+    z-index: 1000000000;
+    color: rgb(24, 23, 23) ; 
+}
