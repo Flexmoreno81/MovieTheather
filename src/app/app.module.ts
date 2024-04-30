@@ -10,15 +10,16 @@ import { MoviesModule } from './Movies/Movies.module';
 import { TheatherssModule } from './Theatherss/Theatherss.module'; 
 import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './Admin/Admin.component';
 
 
 @NgModule({
-  declarations: [				
+  declarations: [					
     AppComponent,
       NavbarComponent,
       HomeComponent,
       NOTFOUNDComponent,
-      
+      AdminComponent
    ],
   imports: [
     BrowserModule,

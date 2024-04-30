@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MovieServicesService } from '../../Services/MovieServices/MovieServices.service';
 import { Movies } from '../../../Models/Movies';
+import { MovieFilter } from '../../../Models/MovieFilter';
 
 @Component({
   selector: 'app-Movie_List',
@@ -10,16 +11,27 @@ import { Movies } from '../../../Models/Movies';
 })
 export class Movie_ListComponent implements OnInit {
 
-  constructor(private moviesServices: MovieServicesService) { }
+  constructor(private moviesServices: MovieServicesService, private router: Router) { }
 
   protected Movie_List: Movies[] = []; 
   protected genreList: string [] = [] ; 
   protected RatingList: string [] = [] ; 
   protected RealseYear: string [] = [] ; 
+  private filter_list: Movies [] | null = null; 
+  protected orginal_list: Movies [] = [] ; 
+  protected movie_Selected: MovieFilter = {
+    genre: 'any', 
+    Rating: 'any', 
+    realseYear: 'any'
+  }; 
+  
+
 
   ngOnInit() {
     this.moviesServices.getMovies().subscribe((data: Movies []) => {
       this.Movie_List = data; 
+      this.orginal_list = [...this.Movie_List] ; 
+     
     } ); 
 
     this.moviesServices.getGenreList().subscribe((data: string [])=> {
@@ -37,4 +49,55 @@ export class Movie_ListComponent implements OnInit {
     }); 
   }
 
+  
+  
+  private applyFilters(): void {
+    let filteredList = [...this.orginal_list]; // Start with a copy of the original list
+    
+    // Apply genre filter
+    if (this.movie_Selected.genre !== 'any') {
+      filteredList = filteredList.filter(movie => movie.genre.toLowerCase().includes(this.movie_Selected.genre.toLowerCase()));
+    }
+    
+    // Apply rating filter
+    if (this.movie_Selected.Rating !== 'any') {
+      filteredList = filteredList.filter(movie => movie.rating.toLowerCase().includes(this.movie_Selected.Rating.toLowerCase()));
+    }
+    
+    // Apply release year filter
+    if (this.movie_Selected.realseYear !== 'any') {
+      filteredList = filteredList.filter(movie => movie.releaseYear.toLowerCase().includes(this.movie_Selected.realseYear.toLowerCase()));
+    }
+    
+    // Update the Movie_List with the filtered results
+    this.Movie_List = filteredList;
+  }
+  
+  protected onSelectMoviesGenere(selectedGenre: string): void {
+    this.movie_Selected.genre = selectedGenre;
+    this.applyFilters();
+  }
+  
+  protected onSelectedRating(selectedRating: string): void {
+    this.movie_Selected.Rating = selectedRating;
+    this.applyFilters();
+  }
+  
+  protected onSelectRealseYear(selectedRealseYear: string): void {
+    this.movie_Selected.realseYear = selectedRealseYear;
+    this.applyFilters();
+  }
+
+
+  public redirectMovieInfo(item: Movies) {
+    this.router.navigate(['/movies/', item.movieId]); 
+  } 
+  
+
+
 }
+
+ 
+
+  
+   

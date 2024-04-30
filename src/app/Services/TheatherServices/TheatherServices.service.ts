@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Theater } from '../../../Models/Theater';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 const THEATHER_API = environment.THEATHER_BASE_CALL ; 
 
@@ -11,14 +12,30 @@ const THEATHER_API = environment.THEATHER_BASE_CALL ;
 })
 export class TheatherServicesService {
 
-constructor(private xhttp: HttpClient) { }
+constructor(private xhttp: HttpClient, private route: Router) { }
 
 public getTheather(): Observable<Theater[]> {
-  return (this.xhttp.get<Theater[]>(THEATHER_API))  ;
+  return (this.xhttp.get<Theater[]>(THEATHER_API).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 404) {
+          this.route.navigate(['/not-found'])
+      }
+      
+      return throwError(() => error);
+  })
+  ))  ;
  }
 
  public getThether_info(id: number): Observable<Theater> {
-  return (this.xhttp.get<Theater>(THEATHER_API + "/" + id)); 
+  return (this.xhttp.get<Theater>(THEATHER_API + "/" + id).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 404) {
+          this.route.navigate(['/not-found'])
+      }
+      
+      return throwError(() => error);
+  })
+  )); 
  } 
 
 }

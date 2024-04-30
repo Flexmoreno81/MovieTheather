@@ -2,7 +2,7 @@
 
 <div class="grid-container">
   @for (x of Movie_List; track $index) {
-    <div class="movie-poster">
+    <div class="movie-poster" (click)="redirectMovieInfo(x)">
       <img src="./assets/IMG/comming_soon_now.jpg" alt = "movie Poster">
       <p>{{x.title}}</p>
     </div>
@@ -15,26 +15,27 @@
   <h3>Narrow down your chocie</h3>
 
   <label>Genre</label>
-  <select>
-    <option>Any Genre</option>
+
+  <select (change) = 'onSelectMoviesGenere(movie_Selected.genre)' [(ngModel)] = 'movie_Selected.genre'>
+    <option value="any">Any Genre</option>
     @for (item of genreList; track $index) {
-      <option>{{item}}</option>
+      <option [value]="item">{{item}}</option>
     }
   </select>
 
   <label>Ratings</label>
-  <select>
-    <option>Any Rating</option>
+  <select (change)="onSelectedRating(movie_Selected.Rating)" [(ngModel)] = 'movie_Selected.Rating'>
+    <option value="any">Any Rating</option>
     @for (item of RatingList; track $index) {
-      <option>{{item}}</option>
+      <option [value]="item">{{item}}</option>
     }
   </select>
 
   <label>Realse Year</label>
-  <select>
-    <option>Any Year</option>
+  <select (change)="onSelectRealseYear(movie_Selected.realseYear)" [(ngModel)]="movie_Selected.realseYear">
+    <option value="any">Any Year</option>
     @for (item of RealseYear; track $index) {
-      <option>{{item}}</option>
+      <option [value]="item">{{item}}</option>
     }
   </select>
 
