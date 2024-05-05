@@ -1,0 +1,17 @@
+<h1>Sign in</h1>
+
+<form #loginForm="ngForm" class='login' (ngSubmit)="loginInfo()">
+  <div>
+    <label for='email'>Email</label>
+    <span *ngIf="wrongCredtional" class="error">*wrong credentials</span>
+    <input [(ngModel)]="username" type='email' id='email' name='USERNAME' required>
+  </div>
+
+  <div>
+    <label for='password'>Password</label>
+    <span *ngIf="wrongCredtional" class="error">*wrong credentials</span>
+    <input [(ngModel)]='passwords' type='password' id='password' name='PASSWORD' required>
+  </div>
+
+  <button>Sign in</button>
+</form>

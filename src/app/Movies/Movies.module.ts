@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 
+
 const routes: Routes = [
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule.forChild(routes), RouterModule, FormsModule
+    CommonModule, RouterModule.forChild(routes), RouterModule, 
+    FormsModule
   ],
   declarations: [ Movie_ListComponent, Movie_infoComponent], 
   exports: []

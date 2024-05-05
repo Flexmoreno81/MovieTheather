@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
 import { Movies } from '../../../Models/Movies';
 import { ScreenTimeServiceService } from '../../Services/ScreenTimeServices/ScreenTimeService.service';
-import { ScreenFilter } from '../../../Models/ScreenFilter';
 import { Theater } from '../../../Models/Theater';
 import { TheatherServicesService } from '../../Services/TheatherServices/TheatherServices.service';
 
@@ -13,14 +12,33 @@ import { TheatherServicesService } from '../../Services/TheatherServices/Theathe
 })
 export class Theather_movieListComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, 
-    private screenTimeService: ScreenTimeServiceService, private theatherServices: TheatherServicesService) { }
+  constructor(private route: ActivatedRoute, private router: Router, 
+    private screenTimeService: ScreenTimeServiceService, 
+    private theatherServices: TheatherServicesService) { }
 
   public id!: number
 
   protected Movie_List: Movies []  = [] ; 
 
    Theather_info!: Theater ; 
+
+
+   public  redirrect(item: Movies): void{
+    this.router.navigate(['/movies/', item.movieId]); 
+   } 
+
+   public disticFilter (): Movies [] {
+    let distinctData: Movies [] = this.Movie_List.filter((value, index, arr) => {
+      return index === arr.findIndex(obj => obj.movieId === value.movieId);
+
+     
+    });
+
+
+    return distinctData ; 
+
+  }
+
   
   
   ngOnInit(): void {

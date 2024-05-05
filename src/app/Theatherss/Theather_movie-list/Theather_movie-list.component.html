@@ -1,8 +1,8 @@
 <h1>Movie in Theather {{Theather_info.name + ", " + Theather_info.city + " " + Theather_info.state}}</h1>
 
 <div class="grid-container">
-  @for (x of Movie_List; track $index) {
-    <div class="movie-poster">
+  @for (x of disticFilter(); track $index) {
+    <div class="movie-poster" (click)="redirrect(x)">
       <img src="./assets/IMG/comming_soon_now.jpg" alt = "movie Poster">
       <p>{{x.title}}</p>
     </div>

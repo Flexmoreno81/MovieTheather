@@ -4,7 +4,7 @@
     display: block;
     border: 1px solid black; 
     padding:0px; 
-    margin: 50px; 
+    margin-bottom: 50px; 
     
 }
 .movie-poster img {
@@ -12,4 +12,87 @@
     height: 100%; 
     display: block;
     
-}  
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    width: 50%; 
+    position: relative;
+    font-style: italic;
+    float: right;
+    margin: 0; 
+    position: absolute;
+    left: 35%; 
+ 
+}
+
+table {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 30% ; 
+}
+
+table, tr, th, td {
+    padding: 10px; 
+    text-align: center;
+}
+
+.grid_container {
+    display: grid;
+    
+    width: auto; 
+    height: 100%; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    
+  
+}
+
+.items {
+    width: auto;  
+    height:100% ;  
+    border: 1px solid black; 
+    padding: 0;
+}
+
+.title{
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    padding-left: 10px; 
+    font-size: 1.25em;
+    font-style: italic;
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: auto; 
+    grid-gap: 1.25em;
+    margin: 0.2em; 
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+  
+}
+
+.time-items {
+    width: auto ;  
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    border-radius: 4px;
+    padding: 5px; 
+    height: auto ; 
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.5);
+
+} 
+
+.times {
+    text-align: center;
+    
+}
+
+
+ 

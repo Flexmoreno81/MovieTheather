@@ -18,10 +18,10 @@ export class AppComponent {
     this.router.events.pipe(
       filter((event: RouterEvent): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      this.showNavbar = !event.urlAfterRedirects.includes('not-found');
+      this.showNavbar = !(event.urlAfterRedirects.includes('not-found') || event.urlAfterRedirects.includes('401'));
     });
   }
-
+  
   shouldShowNavbar(): boolean {
     return this.showNavbar;
   }

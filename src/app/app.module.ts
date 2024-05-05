@@ -10,20 +10,22 @@ import { MoviesModule } from './Movies/Movies.module';
 import { TheatherssModule } from './Theatherss/Theatherss.module'; 
 import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './Admin/Admin.component';
+import { AdminModule } from './Admin/Admin.module';
+import { UnAuthorizedComponent } from './UnAuthorized/UnAuthorized.component';
 
 
 @NgModule({
-  declarations: [					
+  declarations: [						
     AppComponent,
       NavbarComponent,
       HomeComponent,
       NOTFOUNDComponent,
-      AdminComponent
+      UnAuthorizedComponent
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule, MoviesModule, RouterModule, TheatherssModule, HttpClientModule
+    AppRoutingModule, MoviesModule, RouterModule, 
+    TheatherssModule, HttpClientModule, AdminModule
   ],
   exports: [RouterModule], 
   providers: [],

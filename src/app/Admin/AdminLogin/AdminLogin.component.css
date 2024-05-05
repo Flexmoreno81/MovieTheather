@@ -1,0 +1,53 @@
+.login {
+    border: 1px solid black;
+    width: 50% ; 
+    padding: 25px; 
+    position: absolute;
+    top: 17dvh;   
+    left: 25%; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3em;
+    text-align: center;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    
+
+}
+
+
+div {
+    width: 100%;
+    position: relative;
+}
+
+div label {
+    display: block;
+} 
+
+div input {
+    width: 100%;
+} 
+
+.error{
+    
+    color: red; 
+    font-size: 20px;
+    position: absolute;
+    left: 60%; 
+    top: 0; 
+} 
+
+h1{
+    text-align: center;
+    position: relative;
+ }
+
+ button {
+    
+    width: 100% ; 
+    margin-top: 25px;
+    
+ } 
+
+ html{position: relative;} 

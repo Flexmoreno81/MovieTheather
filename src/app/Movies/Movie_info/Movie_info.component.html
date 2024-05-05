@@ -1,3 +1,49 @@
+<h1>{{getMovieInfo().title}}</h1>
+
+
 <div class="movie-poster">
   <img src="./../../../assets/IMG/comming_soon_now.jpg">
+ 
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rating</th>
+      <th>RunTime</th>
+      <th>RealseYear</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>{{getMovieInfo().rating}}</td>
+      <td>{{getMovieInfo().runtime}}</td>
+      <td>{{getMovieInfo().releaseYear}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="grid_container">
+
+  @for (item of disticFilter (); track $index) {
+    <div class = 'items'>
+      <p class = 'title'>{{item.theather.name}}</p>
+      <p class = 'times'>Screens Time</p>
+      
+      <div class = 'time-grid'>
+        @for (x of screenTimeInfo; track $index) {
+
+         <div class = 'time-items'>{{x.screenTime1}}</div>
+        
+        }
+      </div>
+  
+    </div>
+  }
+
+
+  
+ 
 </div>
