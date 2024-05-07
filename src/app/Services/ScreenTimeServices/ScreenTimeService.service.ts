@@ -40,4 +40,17 @@ constructor(private xhttp: HttpClient, private route: Router) { }
     )); 
   }
 
+
+  public getAllScreentimes (): Observable<ScreenTimes []> {
+    return (this.xhttp.get<ScreenTimes[]> (SCREENTIME_API).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+            this.route.navigate(['/not-found'])
+        }
+        
+        return throwError(() => error);
+    })
+    )) ; 
+  } 
+
 }

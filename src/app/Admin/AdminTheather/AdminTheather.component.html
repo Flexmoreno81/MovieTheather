@@ -7,9 +7,7 @@
       <li><a [routerLink]="['/admin', 'AdminDashboard']">ScreenTime</a></li>
       <li><a [routerLink]="['/admin', 'AdminDashboard', 'adminMovies']">Movies</a></li>
       <li><a [routerLink]="['/admin', 'AdminDashboard', 'adminTheather']">Theaters</a></li>
-      <li>
-        <button>Logout</button>
-      </li>
+
     </ul>
   </aside>
 </div>
@@ -18,15 +16,19 @@
 
 <table>
   <tr>
-    <th>Screen Time</th>
-    <th>Movie Title</th>
-    <th>Theater Name</th>
+    <th>Name</th>
+    <th>State</th>
+    <th>City</th>
+    <th>ZipCode</th>
+    <th>Seat Capcity</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let screening of screenings">
-    <td>{{screening.screenTime1}}</td>
-    <td>{{screening.movie.title}}</td>
-    <td>{{screening.theather.name}}</td>
+  <tr *ngFor="let theather of theathers">
+    <td>{{theather.name}}</td>
+    <td>{{theather.state}}</td>
+    <td>{{theather.city}}</td>
+    <td>{{theather.zipcode}}</td>
+    <td>{{theather.seatCapacity}}</td>
     <td>
       <button >Edit</button>
       <button>Remove</button>

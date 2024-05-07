@@ -31,9 +31,10 @@ export class AdminLoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.LoginResult));
         this.wrongCredtional = false; // Set to false when login is successful
         this.formSubmitted = false; 
+        console.log(this.LoginResult.message); 
         this.router.navigate(['/admin/AdminDashboard']);
       } else {
-        this.wrongCredtional = true; // Set to true when login fails
+        this.wrongCredtional = true; 
         this.formSubmitted = true; 
       }
     });

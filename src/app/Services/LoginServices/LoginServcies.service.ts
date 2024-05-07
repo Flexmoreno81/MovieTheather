@@ -10,6 +10,8 @@ import { inject } from '@angular/core';
 
    
   const LOGIN_API: string = environment.LOGIN_BASE_CALL ; 
+
+  
   export const AuthGuard: CanActivateFn = () => {
     const router = inject(Router);
     if(localStorage.getItem('token')){
