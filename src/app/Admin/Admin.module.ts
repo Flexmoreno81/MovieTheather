@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from '../Services/LoginServices/LoginServcies.service';
 import { AdminMoviesComponent } from './AdminMovies/AdminMovies.component';
 import { AdminTheatherComponent } from './AdminTheather/AdminTheather.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../Services/Interceptors/auth.interceptor';
 
  
 const routes: Routes = [
@@ -26,6 +28,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule, RouterModule.forChild(routes), FormsModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   declarations: [AdminLoginComponent, 
     AdminDashboardComponent, AdminMoviesComponent, AdminTheatherComponent]

@@ -4,6 +4,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Movies } from '../../../Models/Movies';
 import { Router } from '@angular/router';
+
+
 const MOVIES_API_BASE_CALL = environment.MOVIES_BASE_CALL ; 
 
 
@@ -72,6 +74,22 @@ constructor(private xhttp: HttpClient,  private route: Router) { }
     )) ;
   }
   
+
+
+  public removeMovies (id: number): Observable<void> {
+    return (this.xhttp.delete<void>(MOVIES_API_BASE_CALL + '/' + id).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+            this.route.navigate(['/not-found'])
+        }
+        else if (error.status ==401) {
+          this.route.navigate(['/401']);
+        }
+
+        return throwError(() => error);
+    })
+    )); 
+  } 
   
   
  

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, RouterLink, RouterModule } from '@angular/router';
+import { Route, Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +8,11 @@ import { Route, RouterLink, RouterModule } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   protected  logo: string = "assets/IMG/Logo.png"  ; 
+  token = localStorage.getItem('token')
+  
 
   ngOnInit() {
   }

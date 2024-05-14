@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginResults } from '../../../Models/LoginResults';
-import { Router } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { ScreenTimeServiceService } from '../../Services/ScreenTimeServices/ScreenTimeService.service';
 import { ScreenTimes } from '../../../Models/Screentimes';
+import { AuthGuard } from '../../Services/LoginServices/LoginServcies.service';
 
 @Component({
   selector: 'app-AdminDashboard',
@@ -16,22 +17,22 @@ export class AdminDashboardComponent implements OnInit {
   protected screenings: ScreenTimes [] = [] ; 
 
   
-   
+   token: CanActivateFn | null = null ; 
 
-  private tokenObject: LoginResults | null = null; 
 
-  ngOnInit() {
-    let tokenObjectstr: string | null = localStorage.getItem('token');
-    if (tokenObjectstr) {
-       this.tokenObject = JSON.parse(tokenObjectstr);
-  
-    } else {
-      this.router.navigate(['/401']); 
-    }
+
+  ngOnInit() { 
+    let token: CanActivateFn = AuthGuard;
+    
+    if (!token) {
+      this.router.navigate(['/401']);
+    } 
 
     this.ScreentimeSservices.getAllScreentimes().subscribe((data) => {
       this.screenings = data; 
     });
   }
 
+
+  
 }

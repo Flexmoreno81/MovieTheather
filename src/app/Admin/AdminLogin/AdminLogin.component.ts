@@ -28,7 +28,7 @@ export class AdminLoginComponent implements OnInit {
       this.LoginResult = data;
   
       if (this.LoginResult.success) {
-        localStorage.setItem('token', JSON.stringify(this.LoginResult));
+        localStorage.setItem('token', this.LoginResult.token);
         this.wrongCredtional = false; // Set to false when login is successful
         this.formSubmitted = false; 
         console.log(this.LoginResult.message); 

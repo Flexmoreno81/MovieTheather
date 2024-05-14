@@ -19,4 +19,15 @@ export class AdminMoviesComponent implements OnInit {
     } );
   }
 
+
+  public removeMovie(id: number) {
+    this.allMovies = this.allMovies.filter((event: Movies) => {
+      return event.movieId != id ; 
+    }); 
+
+    this.MovieServices.removeMovies(id).subscribe(); 
+  } 
+
+
+
 }

@@ -9,9 +9,11 @@ import { NOTFOUNDComponent } from './NOTFOUND/NOTFOUND.component';
 import { MoviesModule } from './Movies/Movies.module';
 import { TheatherssModule } from './Theatherss/Theatherss.module'; 
 import { RouterLink } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AdminModule } from './Admin/Admin.module';
 import { UnAuthorizedComponent } from './UnAuthorized/UnAuthorized.component';
+import { AuthInterceptor } from './Services/Interceptors/auth.interceptor';
+
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { UnAuthorizedComponent } from './UnAuthorized/UnAuthorized.component';
     TheatherssModule, HttpClientModule, AdminModule
   ],
   exports: [RouterModule], 
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

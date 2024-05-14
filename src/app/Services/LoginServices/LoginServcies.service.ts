@@ -11,7 +11,7 @@ import { inject } from '@angular/core';
    
   const LOGIN_API: string = environment.LOGIN_BASE_CALL ; 
 
-  
+  // this injection is used for the route only in case they try to nagtive in broswer unauthicated // 
   export const AuthGuard: CanActivateFn = () => {
     const router = inject(Router);
     if(localStorage.getItem('token')){
@@ -35,13 +35,19 @@ constructor(private xhttp: HttpClient, private route: Router) { }
         if (error.status === 404) {
           this.route.navigate(['/not-found']);
         }
+
+        else if (error.status == 401) {
+          this.route.navigate(['/401']);
+        }
         return throwError(() => error);
       })
     ); 
   }
 
-  
-  
+
+  public getToken (): string | null {
+    return (localStorage.getItem('token')) ; 
+  } 
 
    
 }
