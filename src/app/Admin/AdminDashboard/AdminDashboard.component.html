@@ -22,13 +22,53 @@
     <th>Theater Name</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let screening of screenings">
-    <td>{{screening.screenTime1}}</td>
-    <td>{{screening.movie.title}}</td>
-    <td>{{screening.theather.name}}</td>
-    <td>
-      <button >Edit</button>
-      <button>Remove</button>
-    </td>
-  </tr>
+  @for (screentime of screenings; track $index) {
+    <tr>
+      <td>
+        @if (!screentime.isEditable) {
+          <span>{{screentime.screenTime1}}</span>
+        } @else {
+          <input [(ngModel)]="screentime.screenTime1">
+        }
+      </td>
+    
+
+      <td>
+        @if (!screentime.isEditable) {
+          <span>{{screentime.movie.title}}</span>
+        } @else {
+          <select [(ngModel)]="screentime.editableMovie.title" (change)="onSelectMovies($event)">
+            @for (movie of MovieList; track $index) {
+              <option [value]="movie.title">{{movie.title}}</option>
+            }
+          </select>
+        }
+      </td>
+
+
+      <td>
+        @if (!screentime.isEditable) {
+          <span>{{screentime.theather.name}}</span>
+        } @else {
+          <select [(ngModel)] = 'screentime.editableTheather.name' (change)="onSelectTheather($event)">
+            @for (theather of TheatherList; track $index) {
+              <option [value]="theather.name">{{theather.name}}</option>
+            }
+          </select>
+          
+        }
+      </td>
+
+
+      
+
+      <td>
+        @if(!screentime.isNew){
+          <button (click)="editScreenTime(screentime)">Edit</button>
+        <button (click)="removeScreentime(screentime.screeningId)">Remove</button>
+        } 
+      </td>
+    </tr>
+  }
 </table>
+

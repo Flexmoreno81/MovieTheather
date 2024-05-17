@@ -23,15 +23,55 @@
     <th>Seat Capcity</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let theather of theathers">
-    <td>{{theather.name}}</td>
-    <td>{{theather.state}}</td>
-    <td>{{theather.city}}</td>
-    <td>{{theather.zipcode}}</td>
-    <td>{{theather.seatCapacity}}</td>
-    <td>
-      <button >Edit</button>
-      <button>Remove</button>
-    </td>
-  </tr>
+  @for (theather of theathers; track $index) {
+    <tr>
+      <td>
+        @if (!theather.isEditable) {
+          <span>{{theather.name}}</span>
+        } @else {
+          <input [(ngModel)]="theather.name">
+        }
+      </td>
+      <!-- Repeat for other fields -->
+
+      <td>
+        @if (!theather.isEditable) {
+          <span>{{theather.state}}</span>
+        } @else {
+          <input [(ngModel)]="theather.state">
+        }
+      </td>
+
+
+      <td>
+        @if (!theather.isEditable) {
+          <span>{{theather.city}}</span>
+        } @else {
+          <input [(ngModel)]="theather.city">
+        }
+        </td>
+
+
+        <td>
+          @if (!theather.isEditable) {
+            <span>{{theather.zipcode}}</span>
+          } @else {
+            <input [(ngModel)]="theather.zipcode">
+          }
+          </td>
+
+          <td>
+            @if (!theather.isEditable) {
+              <span>{{theather.seatCapacity}}</span>
+            } @else {
+              <input [(ngModel)]="theather.seatCapacity">
+            }
+            </td>
+
+          <td>
+            <button (click)="editTheather(theather.theatherId, theather)">Edit</button>
+            <button (click)="removeTheather(theather.theatherId)">Remove</button>
+          </td>
+
+        }
 </table>

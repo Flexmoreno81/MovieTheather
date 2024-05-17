@@ -24,17 +24,74 @@
     <th>releaseYear</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let movie of allMovies">
-    <td>{{movie.title}}</td>
-    <td>{{movie.director}}</td>
-    <td>{{movie.genre}}</td>
-    <td>{{movie.rating}}</td>
-    <td>{{movie.runtime}}</td>
-    <td>{{movie.releaseYear}}</td>
- 
-    <td>
-      <button >Edit</button>
-      <button (click)="removeMovie(movie.movieId)">Remove</button>
-    </td>
-  </tr>
+
+  @for (movie of allMovies; track movie) {
+    <tr>
+      <td>
+        @if (!movie.isEditable) {
+          <span>{{movie.title}}</span>
+        } @else {
+          <input [(ngModel)]="movie.title">
+        }
+      </td>
+      <!-- Repeat for other fields -->
+
+      <td>
+        @if (!movie.isEditable) {
+          <span>{{movie.director}}</span>
+        } @else {
+          <input [(ngModel)]="movie.director">
+        }
+      </td>
+
+
+      <td>
+        @if (!movie.isEditable) {
+          <span>{{movie.genre}}</span>
+        } @else {
+          <input [(ngModel)]="movie.genre">
+        }
+      </td>
+
+
+      <td>
+        @if (!movie.isEditable) {
+          <span>{{movie.rating}}</span>
+        } @else {
+          <input [(ngModel)]="movie.rating">
+        }
+      </td>
+
+      <td>
+        @if (!movie.isEditable) {
+          <span>{{movie.runtime}}</span>
+        } @else {
+          <input [(ngModel)]="movie.runtime">
+        }
+      </td>
+
+      <td>
+        @if (!movie.isEditable) {
+          <span>{{movie.releaseYear}}</span>
+        } @else {
+          <input [(ngModel)]="movie.releaseYear">
+        }
+      </td>
+
+
+      <td>
+        @if(!movie.isNew){
+          <button (click)="editMovie(movie)">Edit</button>
+
+          <button (click)="removeMovie(movie.movieId)">Remove</button>
+        }
+
+        @else {
+          <button (click)="submitMovie(movie)">submit</button>
+        } 
+      </td>
+    </tr>
+  }
 </table>
+
+<button id = 'modify' (click)="addMovie()">Add Movie</button>

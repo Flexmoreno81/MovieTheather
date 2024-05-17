@@ -5,6 +5,7 @@ import { Movies } from '../../../Models/Movies';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ScreenTimes } from '../../../Models/Screentimes';
 import { Router } from '@angular/router';
+import { addScreenTime } from '../../../Models/AddScreentime';
 
 const SCREENTIME_API = environment.ScreenTimeAPI_BASE_CALL ; 
 
@@ -51,6 +52,65 @@ constructor(private xhttp: HttpClient, private route: Router) { }
         return throwError(() => error);
     })
     )) ; 
+  }
+  
+  
+  public PutScreenTime(id: number, Screentime: ScreenTimes): Observable<void> {
+    return (this.xhttp.put<void>(SCREENTIME_API + "/putScreen/" + id, Screentime).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+            this.route.navigate(['/not-found'])
+        }
+
+        else if (error.status ==401) {
+            this.route.navigate(['/401']);
+        }
+        else if (error.status == 500) {
+          console.log(error);  
+        }
+        
+        return throwError(() => error);
+    })
+    )) ; 
+  }
+  
+  
+  public removeScreentime(id: number): Observable<HttpErrorResponse> {
+    return(this.xhttp.delete<HttpErrorResponse>(SCREENTIME_API + "/" + id).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+            this.route.navigate(['/not-found'])
+        }
+
+        else if (error.status ==401) {
+            this.route.navigate(['/401']);
+        }
+
+        else if (error.status ==500) {
+          window.alert('Cannot delete current theather because it is depended on ScreenTime.') ; 
+        } 
+ 
+        
+        return throwError(() => error);
+    })
+    )); 
+  }
+  
+  
+  public AddScreentime(screentime: addScreenTime): Observable<addScreenTime> {
+    return (this.xhttp.post<addScreenTime>(SCREENTIME_API + "/", screentime).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+            this.route.navigate(['/not-found'])
+        }
+
+        else if (error.status ==401) {
+            this.route.navigate(['/401']);
+        }
+        
+        return throwError(() => error);
+    })
+    )); 
   } 
 
 }

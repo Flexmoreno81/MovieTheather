@@ -85,12 +85,44 @@ constructor(private xhttp: HttpClient,  private route: Router) { }
         else if (error.status ==401) {
           this.route.navigate(['/401']);
         }
+        
 
         return throwError(() => error);
     })
     )); 
   } 
   
+
+  // Not add a movie, but modify a current movie
+  public putMovie(id: number, movie: Movies):Observable<void> {
+    return (this.xhttp.put<void>(MOVIES_API_BASE_CALL + '/' + id, movie).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+            this.route.navigate(['/not-found'])
+        }
+        else if (error.status ==401) {
+          this.route.navigate(['/401']);
+        }
+
+        return throwError(() => error);
+    })
+    ));
+  }
   
+  
+  public PostMovie(movie: Movies): Observable<Movies> {
+    return (this.xhttp.post<Movies>(MOVIES_API_BASE_CALL + "/", movie).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 404) {
+            this.route.navigate(['/not-found'])
+        }
+        else if (error.status ==401) {
+          this.route.navigate(['/401']);
+        }
+
+        return throwError(() => error);
+    })
+    )) ; 
+  } 
  
 }

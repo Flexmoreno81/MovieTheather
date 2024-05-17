@@ -19,4 +19,25 @@ export class AdminTheatherComponent implements OnInit {
     }); 
   }
 
+  protected editTheather(id: number, theather: Theater) {
+    theather.isEditable = !theather.isEditable ;  
+
+    if (!theather.isEditable) {
+      this.theatherServices.PutTheather(id, theather).subscribe(); 
+      
+    } 
+  }
+  
+  
+  protected removeTheather(id: number){ 
+    this.theatherServices.removeTheather(id).subscribe(); 
+    
+    this.theathers = this.theathers.filter((event: Theater ) => {
+      return (event.theatherId !== id) ; 
+    } ); 
+
+    
+
+  }
+
 }

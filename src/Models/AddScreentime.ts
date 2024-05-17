@@ -1,8 +1,7 @@
 import { Movies } from "./Movies";
 import { Theater } from "./Theater";
 
-export interface ScreenTimes {
-  screeningId: number, 
+export interface addScreenTime {
   movie: Movies, 
   movieId: number,
   screenTime1: string, 
@@ -10,6 +9,6 @@ export interface ScreenTimes {
   theatherId: number, 
   isEditable?: boolean, 
   isNew?: boolean, 
-  editableMovie: Movies, 
-  editableTheather: Theater,
+  editableMovi?: Movies, 
+  editableTheather?: Theater,
 }

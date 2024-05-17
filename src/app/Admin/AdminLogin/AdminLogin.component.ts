@@ -4,6 +4,7 @@ import { Login } from '../../../Models/Login';
 import { LoginResults } from '../../../Models/LoginResults';
 import { Router } from '@angular/router';
 import { Form } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-AdminLogin',
@@ -12,7 +13,7 @@ import { Form } from '@angular/forms';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor(private loginServices: LoginServciesService, private router: Router) { }
+  constructor(private loginServices: LoginServciesService, private router: Router,private cd: ChangeDetectorRef) { }
 
 
   private login: Login | null = null; 
@@ -33,6 +34,7 @@ export class AdminLoginComponent implements OnInit {
         this.formSubmitted = false; 
         console.log(this.LoginResult.message); 
         this.router.navigate(['/admin/AdminDashboard']);
+        this.cd.detectChanges();  // Manually trigger change detection
       } else {
         this.wrongCredtional = true; 
         this.formSubmitted = true; 

@@ -11,14 +11,19 @@
   <div>
     <a [routerLink]="['/theater']" routerLinkActive="active">Theater</a>
   </div>
+
+  <div>
+    <a [routerLink]="['/admin/AdminDashboard']">Admin Dashboard</a>
+  </div>
   
   <div>
-    @if(token){
-      <a [routerLink]="['/admin']"> Admin Logout</a>
+    @if(isLoggin){
+      <a (click)="onLogOut()"> Admin Logout</a>
     }@else {
       <a [routerLink]="['/admin']"> Admin login</a>
     } 
   </div>
+  
 
 
 </nav>

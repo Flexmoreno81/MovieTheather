@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Theater } from '../../../Models/Theater';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -36,6 +36,45 @@ public getTheather(): Observable<Theater[]> {
       return throwError(() => error);
   })
   )); 
+ }
+
+ 
+ public removeTheather (id: number): Observable<void> {
+
+  return (this.xhttp.delete<void>(THEATHER_API + "/" + id).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 404) {
+          this.route.navigate(['/not-found'])
+      }
+      
+      else if ((error.status == 401)) {
+        this.route.navigate(["/401"]);
+        
+      }
+      
+      else if (error.status == 500) {
+        
+        
+      } 
+      return throwError(() => error);
+  })
+  )) ; 
+ }
+ 
+ 
+ public PutTheather(id: number, theather: Theater): Observable<void> {
+  return (this.xhttp.put<void>(THEATHER_API + "/" + id, theather).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 404) {
+          this.route.navigate(['/not-found'])
+      }
+      
+      else if ((error.status == 401)) {
+        this.route.navigate(["/401"]);
+      } 
+      return throwError(() => error);
+  })
+  )) ;
  } 
 
 }

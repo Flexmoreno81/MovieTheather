@@ -8,5 +8,8 @@ export interface Theater {
 
     zipcode: string
 
-    seatCapacity: number
+    seatCapacity: number, 
+    isEditable? : boolean, 
+    isNew?: boolean, 
+    editableTheather?: Theater
 } 
