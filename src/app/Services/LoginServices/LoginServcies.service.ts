@@ -49,7 +49,7 @@ private setAuthStatus(isauthenticated: boolean): void {
   this._authStatus.next(isauthenticated) ; 
 } 
 
-  public tokenKey: string = 'tokenKey';
+  public tokenKey: string = 'token';
   private _authStatus = new BehaviorSubject<boolean>(false);
   public authStatus = this._authStatus.asObservable() ; 
 

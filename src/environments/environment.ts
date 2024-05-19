@@ -1,5 +1,8 @@
 export const environment = {
-    production: true,
-    apiGetArrayCountry: 'http://prod-api.example.com/api/Country'
+    production: false,
+    THEATHER_BASE_CALL: 'https://movietheatherapi2.azurewebsites.net/api/Theathers', 
+    ScreenTimeAPI_BASE_CALL: 'https://movietheatherapi2.azurewebsites.net/api/ScreenTimes', 
+    MOVIES_BASE_CALL: 'https://movietheatherapi2.azurewebsites.net/api/Movies', 
+    LOGIN_BASE_CALL: 'https://movietheatherapi2.azurewebsites.net/api/Logins'
   };
   
